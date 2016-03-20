@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe form</title>
+    <!--<link href="{% static "css/google_plus_scraper_site.css" %}" rel="stylesheet">-->
+</head>
+<body>
+    <div id="content">
+        <form action="." method="post"> 
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Subscribe">
+        </form>
+    </div>
+</body>
+</html>
