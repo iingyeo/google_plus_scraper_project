@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 # Application definition
 
@@ -38,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'google_plus_scraper_app',
+    'djcelery',
+    'kombu.transport.django',
 ]
 
 MIDDLEWARE_CLASSES = [
