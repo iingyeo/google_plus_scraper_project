@@ -17,6 +17,20 @@ Users can register their email to receive scraped google plus article periodical
 pip install -r requirements.txt
 ```
 
+## Run the worker
+To run the worker
+```
+python manage.py celery worker --loglevel=info
+```
+The worker will run the task whenever the task is queued.
+
+## Run the scheduler
+To run the scheduler
+```
+python manage.py celery beat
+```
+The scheduler will send the message to the task queue
+
 ## Reference
 
 * http://scrapy.org/
