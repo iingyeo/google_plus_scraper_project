@@ -10,6 +10,8 @@ Users can register their email to receive scraped google plus article periodical
 
 [django](https://www.djangoproject.com/) is used to provide the email subscription form.
 
+[scrapy-djangoitem](https://github.com/scrapy-plugins/scrapy-djangoitem) is used to integrate scrapy with django.
+
 [django-celery](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html) is used to schedule periodical task. 
 
 ## Install
@@ -35,6 +37,7 @@ The scheduler will send the message to the task queue
 
 * http://scrapy.org/
 * https://www.djangoproject.com/
+* https://github.com/scrapy-plugins/scrapy-djangoitem
 * http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
 * http://marcela-campo.blogspot.kr/2015/03/scraping-website-using-scrapy-and-django.html
 * http://sunshineatnoon.github.io/Use-scrapy-to-scrape-Amazon/
