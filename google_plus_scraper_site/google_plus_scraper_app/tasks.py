@@ -25,7 +25,7 @@ def execute_send_mail():
     td = timedelta(days=7)
     dateCondition = str(today-td)
 
-    articleList = GooglePlusArticle.objects.all().filter(date__gte=dateCondition)
+    articleList = GooglePlusArticle.objects.all().filter(date__gte=dateCondition).filter(is_sent=False)
 
     contents = """
     <p>Hello, This is Weekly Tech Trends</p>
@@ -34,6 +34,8 @@ def execute_send_mail():
 
     for article in articleList:
         contents = contents + '<li><a href="' + article.link + '">' + article.title + '</a></li>'
+        article.is_sent = True
+        article.save()
 
     contents = contents + '</ul>'
 
