@@ -27,24 +27,27 @@ def execute_send_mail():
 
     articleList = GooglePlusArticle.objects.all().filter(date__gte=dateCondition).filter(is_sent=False)
 
-    contents = """
-    <p>Hello, This is Weekly Tech Trends</p>
-    <ul>
-    """
+    if articleList:
+        contents = """
+        <p>Hello, This is Weekly Tech Trends</p>
+        <ul>
+        """
 
-    for article in articleList:
-        contents = contents + '<li><a href="' + article.link + '">' + article.title + '</a></li>'
-        article.is_sent = True
-        article.save()
+        for article in articleList:
+            contents = contents + '<li><a href="' + article.link + '">' + article.title + '</a></li>'
+            article.is_sent = True
+            article.save()
 
-    contents = contents + '</ul>'
+        contents = contents + '</ul>'
 
-    logger.info('mail contents : ' + contents)
+        logger.info('mail contents : ' + contents)
 
-    subject = 'Weekly Tech Trends'
-    from_email = 'test@test.com'
-    msg = EmailMessage(subject, contents, from_email, to_list)
-    msg.content_subtype = "html"
-    msg.send()
+        subject = 'Weekly Tech Trends'
+        from_email = 'test@test.com'
+        msg = EmailMessage(subject, contents, from_email, to_list)
+        msg.content_subtype = "html"
+        msg.send()
+    else:
+        logger.info("nothing to send mail")
 
     logger.info("Sending mail task finished")
